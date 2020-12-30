@@ -1,6 +1,5 @@
 
-function Card(employee,id) {
-  this.employee = employee
+function Card(id) {
   this.id = id;
   this.taskList = [];
   this.container;
@@ -13,3 +12,5 @@ Card.prototype.isEmpty = function (){
     return false;
   }
 }
+
+
