@@ -1,0 +1,21 @@
+.card {
+    border:1px solid black;   
+    width: 30rem; 
+    text-align: center;    
+}
+
+.task {
+    border: 1px solid red;
+    width: 100%;
+    text-align: left;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+button {
+    margin: auto 0;
+    width: 5rem;
+    height: 2rem;
+}
