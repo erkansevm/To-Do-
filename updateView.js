@@ -1,8 +1,10 @@
 const updateView = (()=>{
    const myBody = document.body;
    
-   function updateCard(card) {
-     
+   function updateCard(card,employee) {
+
+    card.container.appendChild(employee.container)
+    
     card.taskList.forEach(task => {
     let cardTaskLi=document.createElement("div")
     cardTaskLi.appendChild(task.container)

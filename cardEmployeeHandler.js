@@ -3,8 +3,6 @@ const cardEmployeeHandler = (() =>{
     const createConnection = function(card,employee) {
       card.employee = employee;
       employee.card = card;
-      console.log(card.employee);
-      console.log(employee.card);
     }
 
     const deleteConnection = function(card,employee) {

@@ -8,7 +8,7 @@ const createElement = (()=>{
     let taskInfoP = document.createElement('p');
     let taskStatusP = document.createElement('p');
     let taskCheckBtn=document.createElement("button")
-    taskCheckBtn.textContent="Check";
+    taskCheckBtn.textContent="Edit";
     
     taskNameP.textContent = task.taskName;
     taskStarDateP.textContent = task.starDate;
@@ -44,9 +44,44 @@ const createElement = (()=>{
 
   }
 
+  let createEmployeeDiv=function(employee){
+    let employeeDiv=document.createElement("div");
+    let employeeName=document.createElement("p");
+    let employeeJob=document.createElement("p");
+
+    employee.container=employeeDiv;
+    
+    employeeName.textContent=employee.name;
+    employeeJob.textContent=employee.job;
+
+    employeeDiv.classList.add("employee");
+
+    employeeDiv.appendChild(employeeName);
+    employeeDiv.appendChild(employeeJob);
+  }
+
+
+  let createEditTask=function(task){
+    let editDiv=document.createElement("div");
+    let taskNameIn=document.createElement("input")
+    let taskStartDateIn=document.createElement("input")
+    let taskFinalDateIn=document.createElement("input")
+    let taskInfoIn=document.createElement("input")
+    let taskSubmitbtn=document.createElement("button")
+
+    task.container=editDiv;
+    editDiv.classList.add("taskEdit")
+    editDiv.appendChild(taskNameIn)
+    editDiv.appendChild(taskStartDateIn)
+    editDiv.appendChild(taskFinalDateIn)
+    editDiv.appendChild(taskInfoIn)
+    editDiv.appendChild(taskSubmitbtn)
+  }
+
   return {
     createTaskDiv,
-    createCardDiv
+    createCardDiv,
+    createEmployeeDiv
   }
 
 })()
