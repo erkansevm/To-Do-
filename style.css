@@ -68,3 +68,8 @@ button {
   opacity: 0.5;
  }
 
+
+.editbuttons{
+    display: flex;
+    flex-direction: row;
+}

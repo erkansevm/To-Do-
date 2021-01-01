@@ -31,13 +31,13 @@ const createElement = (()=>{
     taskDiv.appendChild(taskStatusP);
     taskDiv.appendChild(taskEditBtn);
     
-
+    //Edit button event
     taskEditBtn.addEventListener("click",(e) =>{
            //create edit div
            createElement.createEditTask(task.container)
            task.container.classList.add("edit-mode")
            
-           //replace change 
+           //replace change-----------------------------------
      
            document.querySelector(".submit").addEventListener("click",function(){
            let hand=document.querySelector(".taskEdit")
@@ -92,7 +92,14 @@ const createElement = (()=>{
            task.container.removeChild(task.container.lastElementChild)
    
 
-           })    
+           })
+           
+           document.querySelector(".cancel").addEventListener("click",function(){
+            task.container.classList.remove("edit-mode")
+            task.container.removeChild(task.container.lastElementChild)
+            
+           })
+           
     })
   }
 
@@ -135,7 +142,9 @@ const createElement = (()=>{
 
   let createEditTask=function(task){
     let editDiv=document.createElement("div");
+  
 
+    //İnputs
     let taskNameIn=document.createElement("input")
     taskNameIn.id="taskNameIn"
     taskNameIn.placeholder="TaskName"
@@ -157,13 +166,30 @@ const createElement = (()=>{
     taskStatusIn.id="taskStatusIn"
     taskStatusIn.placeholder="taskStatus"
 
+    //Edit buttons 
+
+    let editButtons=document.createElement("div")
+    editButtons.classList.add("editbuttons")
 
     let taskSubmitbtn=document.createElement("button")
     taskSubmitbtn.textContent="Submit"
     taskSubmitbtn.classList.add("submit")
 
+    let taskCancelbtn=document.createElement("button")
+    taskCancelbtn.textContent="Cancel"
+    taskCancelbtn.classList.add("cancel")
 
+    let taskDeletebtn=document.createElement("button")
+    taskDeletebtn.textContent="Delete"
+    taskDeletebtn.classList.add("delete")
+
+    editButtons.appendChild(taskSubmitbtn)
+    editButtons.appendChild(taskCancelbtn)
+    editButtons.appendChild(taskDeletebtn)
   
+
+
+
     task.appendChild(editDiv);
 
     editDiv.classList.add("taskEdit")
@@ -172,7 +198,8 @@ const createElement = (()=>{
     editDiv.appendChild(taskFinalDateIn)
     editDiv.appendChild(taskInfoIn)
     editDiv.appendChild(taskStatusIn)
-    editDiv.appendChild(taskSubmitbtn)
+    editDiv.appendChild(editButtons)
+
   }
 
   return {
