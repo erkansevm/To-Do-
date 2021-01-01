@@ -20,8 +20,15 @@ createElement.createEmployeeDiv(employee1)
 console.log(task1.starDate);
 console.log(task1.container);
 
+
+
 createElement.createCardDiv(card1)
 updateView.updateCard(card1,employee1);
+
+
+
+
+
 
 let employee2 = new Employee("Furkan Sevim","Dev");
 let card2 = new Card(15);
@@ -29,6 +36,7 @@ let card2 = new Card(15);
 let task11 = new Task("Design","12.02.2020","12.02.2020","ASLflsdflsdlflsd");
 let task22 = new Task("Tasarım","12.02.2020","12.02.2020","ASLflsdflsdlflsd");
 let task33 = new Task("Coding","12.02.2020","12.02.2020","ASLflsdflsdlflsd");
+
 
 cardEmployeeHandler.createConnection(card2,employee2)
 Controlct.addTaskList(task11,card2);
@@ -43,4 +51,5 @@ createElement.createEmployeeDiv(employee2)
 
 createElement.createCardDiv(card2)
 updateView.updateCard(card2,employee2);
+
 

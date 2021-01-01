@@ -8,6 +8,8 @@ const createElement = (()=>{
     let taskInfoP = document.createElement('p');
     let taskStatusP = document.createElement('p');
     let taskCheckBtn=document.createElement("button")
+
+    taskCheckBtn.classList.add("edit")
     taskCheckBtn.textContent="Edit";
     
     taskNameP.textContent = task.taskName;
@@ -26,11 +28,42 @@ const createElement = (()=>{
     taskDiv.appendChild(taskFinalDateP);
     taskDiv.appendChild(taskInfoP);
     taskDiv.appendChild(taskStatusP);
-    taskDiv.appendChild(taskCheckBtn)
+    taskDiv.appendChild(taskCheckBtn);
     
-    taskCheckBtn.addEventListener('click',()=>{
+
+    taskCheckBtn.addEventListener("click",(e) =>{
+           //create edit div
+           createElement.createEditTask(task.container)
+           task.container.classList.add("edit-mode")
+           
+           //replace change 
+     
+           document.querySelector("#submit").addEventListener("click",function(){
+           let hand=document.querySelector(".taskEdit")
+         
+           let value=document.getElementById("taskNameIn").value
+           e.target.parentElement.object.changeTaskName(value)
+
+           task.container.classList.remove("edit-mode")
+           task.container.removeChild(task.container.lastElementChild)
+           taskNameP.textContent = value
+           })     
+      
+      taskNameP.textContent = task.taskName;
+      console.log(taskNameP.textContent)
+      console.log(task.taskName)
+      taskStarDateP.textContent = task.starDate;
+      taskFinalDateP.textContent = task.finalDate;
+      taskInfoP.textContent = task.taskInfo;
+      taskStatusP.textContent = task.taskStatus;
+      console.log(taskDiv)
+      console.log(taskNameP.textContent)
+      console.log(task.taskName)
       
     })
+
+   
+
   }
 
 
@@ -49,6 +82,7 @@ const createElement = (()=>{
     cardDiv.appendChild(cardTaskDiv);
 
   }
+
 
   let createEmployeeDiv=function(employee){
     let employeeDiv=document.createElement("div");
@@ -72,12 +106,17 @@ const createElement = (()=>{
   let createEditTask=function(task){
     let editDiv=document.createElement("div");
     let taskNameIn=document.createElement("input")
+    taskNameIn.id="taskNameIn"
     let taskStartDateIn=document.createElement("input")
     let taskFinalDateIn=document.createElement("input")
     let taskInfoIn=document.createElement("input")
     let taskSubmitbtn=document.createElement("button")
+    taskSubmitbtn.textContent="Submit"
+    taskSubmitbtn.id="submit"
 
-    task.container=editDiv;
+  
+    task.appendChild(editDiv);
+
     editDiv.classList.add("taskEdit")
     editDiv.appendChild(taskNameIn)
     editDiv.appendChild(taskStartDateIn)
@@ -89,7 +128,8 @@ const createElement = (()=>{
   return {
     createTaskDiv,
     createCardDiv,
-    createEmployeeDiv
+    createEmployeeDiv,
+    createEditTask
   }
 
 })()
