@@ -21,6 +21,7 @@ const createElement = (()=>{
     task.container = taskDiv;
     taskDiv.classList.add("task");
     taskDiv.classList.add("draggable");
+    taskDiv.setAttribute('draggable','true');
     taskDiv.object = task;
 
     taskDiv.appendChild(taskNameP);

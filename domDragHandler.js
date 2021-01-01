@@ -1,19 +1,20 @@
 
-
 const draggables = document.querySelectorAll('.draggable');
 const cards = document.querySelectorAll('.card')
 
-console.log("bu çalıştı");
 draggables.forEach(draggable => {
   
   draggable.addEventListener('dragstart',()=>{
-    console.log("girdim");
+ 
     draggable.classList.add('dragging');
+    let card = draggable.parentElement.object;
+    objectDragHandler.deleteTaskFromCard(draggable.object,card);
   });
 
   draggable.addEventListener('dragend',()=>{
    draggable.classList.remove('dragging')
-  
+   let card = draggable.parentElement.object;
+    objectDragHandler.changeTaskCard(draggable.object,card);
   });
 });
 
