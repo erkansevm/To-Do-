@@ -94,10 +94,20 @@ const createElement = (()=>{
 
            })
            
+           //Cancel button------------------------------
            document.querySelector(".cancel").addEventListener("click",function(){
             task.container.classList.remove("edit-mode")
             task.container.removeChild(task.container.lastElementChild)
-            
+
+           })
+
+          //Delete task button -------------------------------------
+           
+          
+           document.querySelector(".delete").addEventListener("click", function(){
+            var agree=confirm("Are you sure about to delete target task")
+            if(agree){ console.log(task.container.parentElement.removeChild(task.container))
+            }
            })
            
     })
