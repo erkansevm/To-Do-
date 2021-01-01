@@ -28,6 +28,9 @@ const createElement = (()=>{
     taskDiv.appendChild(taskStatusP);
     taskDiv.appendChild(taskCheckBtn)
     
+    taskCheckBtn.addEventListener('click',()=>{
+      
+    })
   }
 
 
