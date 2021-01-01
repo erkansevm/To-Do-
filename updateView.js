@@ -5,7 +5,11 @@ const updateView = (()=>{
     card.container.insertBefore(employee.container,card.container.lastElementChild);
     
     card.taskList.forEach(task => {
+
     card.container.insertBefore(task.container,card.container.lastElementChild);
+
+    Controlct.createConnection(task,card)
+
     });
     myBody.appendChild(card.container);
    }

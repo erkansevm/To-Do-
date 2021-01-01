@@ -1,7 +1,8 @@
 [X]- Date functionality --F
+   -- Day calculation
 [X]- Cancel Edit Button
 [X]- Delete Edit Button
-[]- Add task Button
+[X]- Add task Button
 []- Add card Button
    -- Ask for employee
 

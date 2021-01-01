@@ -103,48 +103,19 @@ const createElement = (()=>{
 
           //Delete task button -------------------------------------
            
-          
            document.querySelector(".delete").addEventListener("click", function(){
-            var agree=confirm("Are you sure about to delete target task")
+            var agree=confirm("Are you sure you want to delete this task")
             if(agree){ console.log(task.container.parentElement.removeChild(task.container))
+            
+            let deletetask=task.card.taskList.indexOf(task)
+            task.card.taskList.splice(deletetask,1)
+            console.log(task.card)
             }
            })
            
     })
   }
 
-  let addButtonTask = function(task) {
-    let taskDiv = document.createElement('div');
-    let taskNameI = document.createElement('input');
-    let taskStarDateI = document.createElement('p');
-    let taskFinalDateI = document.createElement('p');
-    let taskInfoP = document.createElement('p');
-    let taskStatusP = document.createElement('p');
-    let taskEditBtn=document.createElement("button")
-
-    taskEditBtn.classList.add("edit")
-    taskEditBtn.textContent="Edit";
-    
-    taskNameP.textContent = task.taskName;
-    taskStarDateP.textContent = task.startDate;
-    taskFinalDateP.textContent = task.finalDate;
-    taskInfoP.textContent = task.taskInfo;
-    taskStatusP.textContent = task.taskStatus;
-    
-    task.container = taskDiv;
-    taskDiv.classList.add("task");
-    taskDiv.classList.add("draggable");
-    taskDiv.setAttribute('draggable','true');
-    taskDiv.object = task;
-
-    taskDiv.appendChild(taskNameP);
-    taskDiv.appendChild(taskStarDateP);
-    taskDiv.appendChild(taskFinalDateP);
-    taskDiv.appendChild(taskInfoP);
-    taskDiv.appendChild(taskStatusP);
-    taskDiv.appendChild(taskEditBtn);
-    
-  }
 
   let createCardDiv=function(card){
     let cardDiv=document.createElement("div");
@@ -278,6 +249,7 @@ const createElement = (()=>{
       let task = new Task(name.value,finalDate.value,taskInfo.value);
       createTaskDiv(task);
       Controlct.addTaskList(task,card);
+      Controlct.createConnection(task,card);
       updateView.domAddTaskCard(task,card);
       document.querySelectorAll('.card').forEach(element =>{
         element.classList.remove('toggleCard');
