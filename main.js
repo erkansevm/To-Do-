@@ -17,5 +17,11 @@ createElement.createTaskDiv(task1);
 createElement.createEmployeeDiv(employee1)
 
 
+
+
 createElement.createCardDiv(card1)
 updateView.updateCard(card1,employee1);
+
+document.querySelector(".card").addEventListener("click",eventsFunction.createEditDiv)
+
+

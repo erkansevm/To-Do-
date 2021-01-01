@@ -8,6 +8,8 @@ const createElement = (()=>{
     let taskInfoP = document.createElement('p');
     let taskStatusP = document.createElement('p');
     let taskCheckBtn=document.createElement("button")
+    
+    taskCheckBtn.classList.add("edit")
     taskCheckBtn.textContent="Edit";
     
     taskNameP.textContent = task.taskName;
@@ -24,8 +26,8 @@ const createElement = (()=>{
     taskDiv.appendChild(taskFinalDateP);
     taskDiv.appendChild(taskInfoP);
     taskDiv.appendChild(taskStatusP);
-    taskDiv.appendChild(taskCheckBtn)
-    
+    taskDiv.appendChild(taskCheckBtn);
+
   }
 
 
@@ -68,8 +70,12 @@ const createElement = (()=>{
     let taskFinalDateIn=document.createElement("input")
     let taskInfoIn=document.createElement("input")
     let taskSubmitbtn=document.createElement("button")
+    taskSubmitbtn.textContent="Submit"
+    taskSubmitbtn.id="submit"
 
-    task.container=editDiv;
+  
+    task.appendChild(editDiv);
+
     editDiv.classList.add("taskEdit")
     editDiv.appendChild(taskNameIn)
     editDiv.appendChild(taskStartDateIn)
@@ -81,7 +87,8 @@ const createElement = (()=>{
   return {
     createTaskDiv,
     createCardDiv,
-    createEmployeeDiv
+    createEmployeeDiv,
+    createEditTask
   }
 
 })()

@@ -24,4 +24,23 @@ button {
     margin: auto 0;
     width: 5rem;
     height: 2rem;
+    text-align: center;
 }
+
+
+.taskEdit {
+    padding-top: 0.25rem;
+    display: flex;
+    flex-direction: column;
+}
+.edit-mode {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.edit-mode button{
+    display: flex;
+    justify-content: center;
+}
+

@@ -19,3 +19,29 @@ const updateView = (()=>{
   }
 
 })();
+
+const eventsFunction = (()=>{
+
+  function createEditDiv(e){
+    if(e.target.innerHTML==="Edit"){
+
+      //create edit div
+      let task=e.target.parentElement;
+      createElement.createEditTask(task)
+      task.classList.add("edit-mode")
+
+      //replace change 
+      document.querySelector("#submit").addEventListener("click",function(){
+      let hand=document.querySelector(".taskEdit")
+      task.classList.remove("edit-mode")
+      task.removeChild(hand)
+    })
+  }
+
+}
+    return{
+    createEditDiv,
+
+  }
+
+})();
