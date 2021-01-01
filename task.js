@@ -1,7 +1,7 @@
 function Task(taskName,finalDate,taskInfo){
     this.taskName=taskName;
     let d=new Date();
-    this.startDate=`${d.getDay()}.${d.getMonth()}.${d.getFullYear()}`;
+    this.startDate=`${d.getDate()}.${d.getMonth()+1}.${d.getFullYear()}`;
     this.finalDate=finalDate;
     this.taskInfo=taskInfo;
     this.taskStatus="in process";

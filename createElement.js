@@ -103,9 +103,8 @@ const createElement = (()=>{
 
           //Delete task button -------------------------------------
            
-          
            document.querySelector(".delete").addEventListener("click", function(){
-            var agree=confirm("Are you sure about to delete target task")
+            var agree=confirm("Are you sure you want to delete this task")
             if(agree){ console.log(task.container.parentElement.removeChild(task.container))
             }
            })
