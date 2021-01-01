@@ -1,10 +1,11 @@
-function Task(taskName,startDate,finalDate,taskInfo){
+function Task(taskName,startDate,finalDate,taskInfo,taskId){
     this.taskName=taskName;
     this.startDate=startDate;
     this.finalDate=finalDate;
     this.taskInfo=taskInfo;
     this.taskStatus="in process"
     this.container;
+    this.id=taskId;
 }
 
 Task.prototype.changeTaskName=function(newTask){
