@@ -9,9 +9,14 @@ var Controlct = (() => {
         card.taskList.splice(hand,1)
         
     }
+
+    function createConnection(task,card){
+        task.card=card;
+    }
     return {
         addTaskList,
-        deleteList
+        deleteList,
+        createConnection
 
     };
 

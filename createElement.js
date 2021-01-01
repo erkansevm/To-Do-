@@ -106,6 +106,10 @@ const createElement = (()=>{
            document.querySelector(".delete").addEventListener("click", function(){
             var agree=confirm("Are you sure you want to delete this task")
             if(agree){ console.log(task.container.parentElement.removeChild(task.container))
+            
+            let deletetask=task.card.taskList.indexOf(task)
+            task.card.taskList.splice(deletetask,1)
+            console.log(task.card)
             }
            })
            

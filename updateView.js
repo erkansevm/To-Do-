@@ -6,6 +6,7 @@ const updateView = (()=>{
     
     card.taskList.forEach(task => {
     card.container.appendChild(task.container)
+    Controlct.createConnection(task,card)
     });
     myBody.appendChild(card.container);
    }

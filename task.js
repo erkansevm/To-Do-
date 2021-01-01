@@ -6,6 +6,7 @@ function Task(taskName,finalDate,taskInfo){
     this.taskInfo=taskInfo;
     this.taskStatus="in process";
     this.container;
+    this.card;
 }
 
 Task.prototype.changeTaskName=function(newTask){
