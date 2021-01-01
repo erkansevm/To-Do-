@@ -17,14 +17,19 @@ Task.prototype.changeStatus=function(newStatus){
 
 }
 
-Task.prototype.changeTask=function(newtaskName,newfinalDate,newtaskInfo){
-    this.taskName=newtaskName;
-    this.finalDate=newfinalDate;
-    this.taskInfo=newtaskInfo;
+Task.prototype.changeStartDate=function(newstartDate){
+    
+    this.startDate=newstartDate;
 }
 
-Task.prototype.changeTaskDate=function(newDate){
-    this.finalDate=newDate
+Task.prototype.changeFinalDate=function(newfinalDate){
+    this.finalDate=newfinalDate;
+
+}
+
+
+Task.prototype.changeInfo=function(newInfo){
+    this.taskInfo=newInfo
 
 }
 

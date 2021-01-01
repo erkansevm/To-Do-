@@ -7,13 +7,13 @@ const createElement = (()=>{
     let taskFinalDateP = document.createElement('p');
     let taskInfoP = document.createElement('p');
     let taskStatusP = document.createElement('p');
-    let taskCheckBtn=document.createElement("button")
+    let taskEditBtn=document.createElement("button")
 
-    taskCheckBtn.classList.add("edit")
-    taskCheckBtn.textContent="Edit";
+    taskEditBtn.classList.add("edit")
+    taskEditBtn.textContent="Edit";
     
     taskNameP.textContent = task.taskName;
-    taskStarDateP.textContent = task.starDate;
+    taskStarDateP.textContent = task.startDate;
     taskFinalDateP.textContent = task.finalDate;
     taskInfoP.textContent = task.taskInfo;
     taskStatusP.textContent = task.taskStatus;
@@ -28,42 +28,71 @@ const createElement = (()=>{
     taskDiv.appendChild(taskFinalDateP);
     taskDiv.appendChild(taskInfoP);
     taskDiv.appendChild(taskStatusP);
-    taskDiv.appendChild(taskCheckBtn);
+    taskDiv.appendChild(taskEditBtn);
     
 
-    taskCheckBtn.addEventListener("click",(e) =>{
+    taskEditBtn.addEventListener("click",(e) =>{
            //create edit div
            createElement.createEditTask(task.container)
            task.container.classList.add("edit-mode")
            
            //replace change 
      
-           document.querySelector("#submit").addEventListener("click",function(){
+           document.querySelector(".submit").addEventListener("click",function(){
            let hand=document.querySelector(".taskEdit")
-         
-           let value=document.getElementById("taskNameIn").value
-           e.target.parentElement.object.changeTaskName(value)
+            
+           //Name changes
+           
+           let taskNameInval=document.getElementById("taskNameIn").value
+           if(!(taskNameInval==="")){
+           e.target.parentElement.object.changeTaskName(taskNameInval)
+           taskNameP.textContent = taskNameInval;
+           taskNameP.textContent = task.taskName;
+          }
 
+           //Star date changes
+
+           let taskStartDateInval=document.getElementById("taskStartDateIn").value
+           if(!(taskStartDateInval==="")){
+           e.target.parentElement.object.changeStartDate(taskStartDateInval)
+            taskStarDateP.textContent=taskStartDateInval;
+            taskStarDateP.textContent = task.startDate;
+          }
+           //Final date changes
+           
+           let taskFinalDateInval=document.getElementById("taskFinalDateIn").value
+           if(!(taskFinalDateInval==="")){
+           e.target.parentElement.object.changeFinalDate(taskFinalDateInval)
+            taskFinalDateP.textContent=taskFinalDateInval;
+            taskFinalDateP.textContent = task.finalDate;
+          }
+
+           //Info Change
+
+          let taskInfoInval=document.getElementById("taskInfoIn").value
+          if(!(taskInfoInval==="")){
+           e.target.parentElement.object.changeInfo(taskInfoInval)
+            taskInfoP.textContent=taskInfoInval;
+            taskInfoP.textContent = task.taskInfo;
+          }
+
+           //Status Changes
+
+           let taskStatusInval=document.getElementById("taskStatusIn").value
+           if(!(taskStatusInval==="")){
+           e.target.parentElement.object.changeStatus(taskStatusInval)
+            taskStatusP.textContent=taskStatusInval;
+            taskStatusP.textContent = task.taskStatus;
+          }
+
+
+           
            task.container.classList.remove("edit-mode")
            task.container.removeChild(task.container.lastElementChild)
-           taskNameP.textContent = value
-           })     
-      
-      taskNameP.textContent = task.taskName;
-      console.log(taskNameP.textContent)
-      console.log(task.taskName)
-      taskStarDateP.textContent = task.starDate;
-      taskFinalDateP.textContent = task.finalDate;
-      taskInfoP.textContent = task.taskInfo;
-      taskStatusP.textContent = task.taskStatus;
-      console.log(taskDiv)
-      console.log(taskNameP.textContent)
-      console.log(task.taskName)
-      
-    })
-
    
 
+           })    
+    })
   }
 
 
@@ -105,14 +134,33 @@ const createElement = (()=>{
 
   let createEditTask=function(task){
     let editDiv=document.createElement("div");
+
     let taskNameIn=document.createElement("input")
     taskNameIn.id="taskNameIn"
+    taskNameIn.placeholder="TaskName"
+
     let taskStartDateIn=document.createElement("input")
+    taskStartDateIn.id="taskStartDateIn"
+    taskStartDateIn.placeholder="taskStartDate"
+
     let taskFinalDateIn=document.createElement("input")
+    taskFinalDateIn.id="taskFinalDateIn"
+    taskFinalDateIn.placeholder="taskFinalDate"
+
+    
     let taskInfoIn=document.createElement("input")
+    taskInfoIn.id="taskInfoIn"
+    taskInfoIn.placeholder="taskInfo"
+     
+    let taskStatusIn=document.createElement("input")
+    taskStatusIn.id="taskStatusIn"
+    taskStatusIn.placeholder="taskStatus"
+
+
     let taskSubmitbtn=document.createElement("button")
     taskSubmitbtn.textContent="Submit"
-    taskSubmitbtn.id="submit"
+    taskSubmitbtn.classList.add("submit")
+
 
   
     task.appendChild(editDiv);
@@ -122,6 +170,7 @@ const createElement = (()=>{
     editDiv.appendChild(taskStartDateIn)
     editDiv.appendChild(taskFinalDateIn)
     editDiv.appendChild(taskInfoIn)
+    editDiv.appendChild(taskStatusIn)
     editDiv.appendChild(taskSubmitbtn)
   }
 
