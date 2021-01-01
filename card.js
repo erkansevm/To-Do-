@@ -3,6 +3,7 @@ function Card(id) {
   this.id = id;
   this.taskList = [];
   this.container;
+  this.employee;
 }
 
 Card.prototype.isEmpty = function (){

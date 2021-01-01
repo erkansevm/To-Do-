@@ -1,18 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction:row;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-around;
+}
 .card {
     border:1px solid black;   
     width: 30rem;
-    height: auto;
+    height: fit-content;
     text-align: center;  
+    padding: 1rem;
+    cursor: move;
+    background-color: #333;
+    color: white;
 }
 
 .task {
-    border: 1px solid red;
+    border: 1px solid black;
     width: 100%;
     text-align: left;
-    list-style-type: none;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-around;
+    padding:1rem 0;
+    margin-top: 0.5rem;
+    background-color: white;
+    color: black;
 }
 .employee {
     display: flex;
@@ -44,3 +64,6 @@ button {
     justify-content: center;
 }
 
+.draggable.dragging{
+  opacity: 0.5;
+ }

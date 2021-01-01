@@ -8,7 +8,7 @@ const createElement = (()=>{
     let taskInfoP = document.createElement('p');
     let taskStatusP = document.createElement('p');
     let taskCheckBtn=document.createElement("button")
-    
+
     taskCheckBtn.classList.add("edit")
     taskCheckBtn.textContent="Edit";
     
@@ -19,7 +19,9 @@ const createElement = (()=>{
     taskStatusP.textContent = task.taskStatus;
     
     task.container = taskDiv;
-    taskDiv.classList.add("task")
+    taskDiv.classList.add("task");
+    taskDiv.classList.add("draggable");
+    taskDiv.object = task;
 
     taskDiv.appendChild(taskNameP);
     taskDiv.appendChild(taskStarDateP);
@@ -27,6 +29,23 @@ const createElement = (()=>{
     taskDiv.appendChild(taskInfoP);
     taskDiv.appendChild(taskStatusP);
     taskDiv.appendChild(taskCheckBtn);
+    
+    taskCheckBtn.addEventListener("click",(e) =>{
+      eventsFunction.createEditDiv(e)
+      taskNameP.textContent = task.taskName;
+      console.log(taskNameP.textContent)
+      console.log(task.taskName)
+      taskStarDateP.textContent = task.starDate;
+      taskFinalDateP.textContent = task.finalDate;
+      taskInfoP.textContent = task.taskInfo;
+      taskStatusP.textContent = task.taskStatus;
+      console.log(taskDiv)
+      console.log(taskNameP.textContent)
+      console.log(task.taskName)
+      
+    })
+
+   
 
   }
 
@@ -38,13 +57,15 @@ const createElement = (()=>{
 
     card.container=cardDiv;
     cardIdP.textContent=card.id;
-
+   
     cardDiv.classList.add("card")
-    
+    cardDiv.object = card;
+
     cardDiv.appendChild(cardIdP);
     cardDiv.appendChild(cardTaskDiv);
 
   }
+
 
   let createEmployeeDiv=function(employee){
     let employeeDiv=document.createElement("div");
@@ -57,6 +78,8 @@ const createElement = (()=>{
     employeeJob.textContent=employee.job;
 
     employeeDiv.classList.add("employee");
+    employeeDiv.object = employee;
+
 
     employeeDiv.appendChild(employeeName);
     employeeDiv.appendChild(employeeJob);
@@ -66,6 +89,7 @@ const createElement = (()=>{
   let createEditTask=function(task){
     let editDiv=document.createElement("div");
     let taskNameIn=document.createElement("input")
+    taskNameIn.id="taskNameIn"
     let taskStartDateIn=document.createElement("input")
     let taskFinalDateIn=document.createElement("input")
     let taskInfoIn=document.createElement("input")
