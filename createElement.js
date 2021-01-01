@@ -113,12 +113,47 @@ const createElement = (()=>{
     })
   }
 
+  let addButtonTask = function(task) {
+    let taskDiv = document.createElement('div');
+    let taskNameI = document.createElement('input');
+    let taskStarDateI = document.createElement('p');
+    let taskFinalDateI = document.createElement('p');
+    let taskInfoP = document.createElement('p');
+    let taskStatusP = document.createElement('p');
+    let taskEditBtn=document.createElement("button")
+
+    taskEditBtn.classList.add("edit")
+    taskEditBtn.textContent="Edit";
+    
+    taskNameP.textContent = task.taskName;
+    taskStarDateP.textContent = task.startDate;
+    taskFinalDateP.textContent = task.finalDate;
+    taskInfoP.textContent = task.taskInfo;
+    taskStatusP.textContent = task.taskStatus;
+    
+    task.container = taskDiv;
+    taskDiv.classList.add("task");
+    taskDiv.classList.add("draggable");
+    taskDiv.setAttribute('draggable','true');
+    taskDiv.object = task;
+
+    taskDiv.appendChild(taskNameP);
+    taskDiv.appendChild(taskStarDateP);
+    taskDiv.appendChild(taskFinalDateP);
+    taskDiv.appendChild(taskInfoP);
+    taskDiv.appendChild(taskStatusP);
+    taskDiv.appendChild(taskEditBtn);
+    
+  }
 
   let createCardDiv=function(card){
     let cardDiv=document.createElement("div");
     let cardIdP=document.createElement("p");
     let cardTaskDiv=document.createElement("div")
+    let addTaskButton = document.createElement('button');
 
+    addTaskButton.textContent = "Add Task";
+    addTaskButton.style.margin = "10px";
     card.container=cardDiv;
     cardIdP.textContent=card.id;
    
@@ -127,7 +162,15 @@ const createElement = (()=>{
 
     cardDiv.appendChild(cardIdP);
     cardDiv.appendChild(cardTaskDiv);
+    cardDiv.appendChild(addTaskButton);
 
+    //Listeners
+    addTaskButton.addEventListener('click',()=>{
+       document.querySelectorAll('.card').forEach(cardElement => {
+         cardElement.classList.add('toggleCard');
+       })
+       createAddCardDiv(card);
+    });
   }
 
 
@@ -210,6 +253,37 @@ const createElement = (()=>{
     editDiv.appendChild(taskStatusIn)
     editDiv.appendChild(editButtons)
 
+  }
+
+  let createAddCardDiv = function(card) {
+    let addCardDiv = document.createElement('div');
+    let name = document.createElement('input');
+    let finalDate = document.createElement('input');
+    let taskInfo = document.createElement('input');
+    let addButton = document.createElement('button');
+    addButton.textContent = "Add"
+    addCardDiv.classList.add('add-card-div');
+    name.placeholder = "name";
+    finalDate.placeholder = "final date";
+    taskInfo.placeholder = "task info";
+
+
+    addCardDiv.appendChild(name);
+    addCardDiv.appendChild(finalDate);
+    addCardDiv.appendChild(taskInfo);
+    addCardDiv.appendChild(addButton);
+    
+    document.body.appendChild(addCardDiv);
+    addButton.addEventListener('click',()=>{
+      let task = new Task(name.value,finalDate.value,taskInfo.value);
+      createTaskDiv(task);
+      Controlct.addTaskList(task,card);
+      updateView.domAddTaskCard(task,card);
+      document.querySelectorAll('.card').forEach(element =>{
+        element.classList.remove('toggleCard');
+      })
+      document.body.removeChild(addCardDiv);
+    })
   }
 
   return {
