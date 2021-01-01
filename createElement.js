@@ -17,7 +17,9 @@ const createElement = (()=>{
     taskStatusP.textContent = task.taskStatus;
     
     task.container = taskDiv;
-    taskDiv.classList.add("task")
+    taskDiv.classList.add("task");
+    taskDiv.classList.add("draggable");
+    taskDiv.object = task;
 
     taskDiv.appendChild(taskNameP);
     taskDiv.appendChild(taskStarDateP);
@@ -36,9 +38,10 @@ const createElement = (()=>{
 
     card.container=cardDiv;
     cardIdP.textContent=card.id;
-
+   
     cardDiv.classList.add("card")
-    
+    cardDiv.object = card;
+
     cardDiv.appendChild(cardIdP);
     cardDiv.appendChild(cardTaskDiv);
 
@@ -55,6 +58,8 @@ const createElement = (()=>{
     employeeJob.textContent=employee.job;
 
     employeeDiv.classList.add("employee");
+    employeeDiv.object = employee;
+
 
     employeeDiv.appendChild(employeeName);
     employeeDiv.appendChild(employeeJob);
