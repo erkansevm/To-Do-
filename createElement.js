@@ -30,8 +30,25 @@ const createElement = (()=>{
     taskDiv.appendChild(taskStatusP);
     taskDiv.appendChild(taskCheckBtn);
     
+
     taskCheckBtn.addEventListener("click",(e) =>{
-      eventsFunction.createEditDiv(e)
+           //create edit div
+           createElement.createEditTask(task.container)
+           task.container.classList.add("edit-mode")
+           
+           //replace change 
+     
+           document.querySelector("#submit").addEventListener("click",function(){
+           let hand=document.querySelector(".taskEdit")
+         
+           let value=document.getElementById("taskNameIn").value
+           e.target.parentElement.object.changeTaskName(value)
+
+           task.container.classList.remove("edit-mode")
+           task.container.removeChild(task.container.lastElementChild)
+           taskNameP.textContent = value
+           })     
+      
       taskNameP.textContent = task.taskName;
       console.log(taskNameP.textContent)
       console.log(task.taskName)

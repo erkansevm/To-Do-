@@ -3,19 +3,17 @@
 const draggables = document.querySelectorAll('.draggable');
 const cards = document.querySelectorAll('.card')
 
-
+console.log("bu çalıştı");
 draggables.forEach(draggable => {
   
   draggable.addEventListener('dragstart',()=>{
     console.log("girdim");
-    objectDragHandler.deleteTaskFromCard(draggable.object,draggable.parentElement);
     draggable.classList.add('dragging');
   });
 
   draggable.addEventListener('dragend',()=>{
    draggable.classList.remove('dragging')
   
-   objectDragHandler.changeTaskCard(taskId,cardId);
   });
 });
 
