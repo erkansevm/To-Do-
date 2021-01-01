@@ -7,7 +7,7 @@ let task2 = new Task("Tasarım","12.02.2020","12.02.2020","ASLflsdflsdlflsd");
 let task3 = new Task("Coding","12.02.2020","12.02.2020","ASLflsdflsdlflsd");
 
 cardEmployeeHandler.createConnection(card1,employee1)
-console.log(task1.startDate);
+
 Controlct.addTaskList(task1,card1);
 Controlct.addTaskList(task2,card1);
 Controlct.addTaskList(task3,card1);
@@ -17,8 +17,6 @@ createElement.createTaskDiv(task2);
 createElement.createTaskDiv(task1);
 
 createElement.createEmployeeDiv(employee1)
-console.log(task1.starDate);
-console.log(task1.container);
 
 
 
@@ -53,3 +51,6 @@ createElement.createCardDiv(card2)
 updateView.updateCard(card2,employee2);
 
 
+document.querySelector("#filter").addEventListener('click',()=>{
+  objectDragHandler.filterEmployeeByJob('Designer')
+})
